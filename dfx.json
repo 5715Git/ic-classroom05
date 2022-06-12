@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "ic04": {
+      "main": "src/ic04/main.mo",
+      "type": "motoko"
+    },
+    "ic04_assets": {
+      "dependencies": [
+        "ic04"
+      ],
+      "frontend": {
+        "entrypoint": "src/ic04_assets/src/index.html"
+      },
+      "source": [
+        "src/ic04_assets/assets",
+        "dist/ic04_assets/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.9.3",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

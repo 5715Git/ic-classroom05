@@ -1,0 +1,34 @@
+type wasm_module = vec nat8;
+type canister_id = principal;
+type anon_class_8_1 = 
+ service {
+   create_canister: () -> (canister_id);
+   cycleBalance: () -> (nat) query;
+   delete_canister: (canister_id) -> () oneway;
+   getApproved: () -> (bool) query;
+   getMemebers: () -> (vec principal) query;
+   getType: () -> (text) query;
+   install_code: (vec nat8, wasm_module,
+    variant {
+      install;
+      reinstall;
+      upgrade;
+    }, canister_id) -> () oneway;
+   pid: () -> (principal);
+   propose: (ProposeType, text) -> ();
+   reset: () -> () oneway;
+   start_canister: (canister_id) -> () oneway;
+   stop_canister: (canister_id) -> () oneway;
+   vote: () -> ();
+   wallet_receive: () -> (nat);
+ };
+type ProposeType = 
+ variant {
+   create;
+   delete;
+   install;
+   start;
+   stop;
+   zero;
+ };
+service : (nat, nat, vec principal) -> anon_class_8_1

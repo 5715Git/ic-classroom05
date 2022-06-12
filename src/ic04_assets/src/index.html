@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ic04</title>
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="main.css" />
+    <style>
+        .login-button {
+        width: 6rem;
+        font-size: 1rem;
+        padding: 0.7rem 0.7rem;
+      }
+      .login-button i {
+        font-size: 0.5rem;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src="logo.png" alt="DFINITY logo" />
+        <button class="login-button" id="login_button">
+                Login <i>with</i><br /><i>Internet Identity</i>
+              </button>
+      <form action="#">
+        <label for="name">Type:(create/delete/install) &nbsp;</label>
+        <input id="name" alt="Name" type="text" />
+        <br>
+        <button type="submit">propose</button>
+      </form>
+      <button id="vote" type="submit">Vote</button>
+      <section id="greeting"></section>
+
+      <section id="upload">
+        <label for="avatar">Choose a profile wasm:</label>
+        <button id="uploadfile" type="submit">upload</button>
+        <input type="file"
+              id="file" name="file"
+              accept="wasm">
+        
+      </section>
+    </main>
+  </body>
+</html>
