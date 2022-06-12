@@ -46,40 +46,40 @@ async function instllCode() {
     await ic04.install_code(typeinput.value);
 }
 
-async function loginII() {
-    process.env.DFX_NETWORK = local;
-    let iiUrl;
-    if (process.env.DFX_NETWORK === "local") {
-        iiUrl = `http://localhost:8000/?canisterId=${process.env.II_CANISTER_ID}`;
-    } else if (process.env.DFX_NETWORK === "ic") {
-        iiUrl = `https://${process.env.II_CANISTER_ID}.ic0.app`;
-    } else {
-        iiUrl = `https://${process.env.II_CANISTER_ID}.dfinity.network`;
-    }
+// async function loginII() {
+//     process.env.DFX_NETWORK = local;
+//     let iiUrl;
+//     if (process.env.DFX_NETWORK === "local") {
+//         iiUrl = `http://localhost:8000/?canisterId=${process.env.II_CANISTER_ID}`;
+//     } else if (process.env.DFX_NETWORK === "ic") {
+//         iiUrl = `https://${process.env.II_CANISTER_ID}.ic0.app`;
+//     } else {
+//         iiUrl = `https://${process.env.II_CANISTER_ID}.dfinity.network`;
+//     }
 
-    const authClient = await AuthClient.create();
+//     const authClient = await AuthClient.create();
 
-    await new Promise((resolve, reject) => {
-        authClient.login({
-            identityProvider: iiUrl,
-            onSuccess: resolve,
-            onError: reject,
-        });
-    });
-    // At this point we're authenticated, and we can get the identity from the auth client:
-    const identity = authClient.getIdentity();
-    // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
-    const agent = new HttpAgent({ identity });
-    // Using the interface description of our webapp, we create an actor that we use to call the service methods.
-    const webapp = Actor.createActor(webapp_idl, {
-        agent,
-        canisterId: webapp_id,
-    });
-    // Call whoami which returns the principal (user id) of the current user.
-    const principal = await webapp.whoami();
-    // show the principal on the page
-    console.log(principal.toText());
-}
+//     await new Promise((resolve, reject) => {
+//         authClient.login({
+//             identityProvider: iiUrl,
+//             onSuccess: resolve,
+//             onError: reject,
+//         });
+//     });
+//     // At this point we're authenticated, and we can get the identity from the auth client:
+//     const identity = authClient.getIdentity();
+//     // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
+//     const agent = new HttpAgent({ identity });
+//     // Using the interface description of our webapp, we create an actor that we use to call the service methods.
+//     const webapp = Actor.createActor(webapp_idl, {
+//         agent,
+//         canisterId: webapp_id,
+//     });
+//     // Call whoami which returns the principal (user id) of the current user.
+//     const principal = await webapp.whoami();
+//     // show the principal on the page
+//     console.log(principal.toText());
+// }
 
 async function loginII() {
     let login_btn = document.getElementById("login_button");
